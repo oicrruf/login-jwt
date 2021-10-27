@@ -80,7 +80,7 @@ function Home() {
         // console.log(response)
         // document.querySelector('#data').innerText = JSON.stringify(response.data.data)
         localStorage.setItem('token', response.data.data.token);
-        window.location.href = 'https://tic-tac-toe-backend-g34/dashboard'
+        window.location.href = 'https://tic-tac-toe-frontend-g34/dashboard'
       })
       .catch(function (error) {
         console.log(error);
