@@ -11,7 +11,7 @@ import axios from 'axios';
 import jwt from 'jwt-decode';
 
 const logout = () => {
-  axios.post('http://localhost:9600/api/user/logout', { body: null }, {
+  axios.post(`${process.env.REACT_APP_API_SERVER}/api/user/logout`, { body: null }, {
     headers: {
       'Content-Type': 'application/json',
       'auth-token': localStorage.getItem('token')
@@ -74,14 +74,13 @@ function App() {
 
 
 function Home() {
-
   const login = (data) => {
-    axios.post('http://localhost:9600/api/user/login', data)
+    axios.post(`${process.env.REACT_APP_API_SERVER}/api/user/login`, data)
       .then(function (response) {
         // console.log(response)
         // document.querySelector('#data').innerText = JSON.stringify(response.data.data)
         localStorage.setItem('token', response.data.data.token);
-        window.location.href = 'http://localhost:3000/dashboard'
+        window.location.href = 'https://tic-tac-toe-backend-g34/dashboard'
       })
       .catch(function (error) {
         console.log(error);
@@ -187,7 +186,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     console.log(localStorage.getItem('token'))
-    axios.post('http://localhost:9600/api/dashboard',
+    axios.post(`${process.env.REACT_APP_API_SERVER}/api/dashboard`,
       { "body": null },
       {
         headers: {
